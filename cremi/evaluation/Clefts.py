@@ -12,6 +12,7 @@ class Clefts:
 
         self.test_clefts_mask = np.logical_or(test_clefts.data.value == 0xffffffffffffffff, self.truth_clefts_invalid)
         self.truth_clefts_mask = np.logical_or(truth_clefts.data.value == 0xffffffffffffffff, self.truth_clefts_invalid)
+
         self.test_clefts_edt = ndimage.distance_transform_edt(self.test_clefts_mask, sampling=test_clefts.resolution)
         self.truth_clefts_edt = ndimage.distance_transform_edt(self.truth_clefts_mask, sampling=truth_clefts.resolution)
 

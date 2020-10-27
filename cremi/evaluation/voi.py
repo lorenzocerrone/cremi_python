@@ -38,6 +38,8 @@ def voi(reconstruction, groundtruth, ignore_reconstruction=[], ignore_groundtrut
     [1] Meila, M. (2007). Comparing clusterings - an information based 
     distance. Journal of Multivariate Analysis 98, 873-895.
     """
+    #reconstruction = reconstruction.astype(np.int64)
+    #groundtruth = groundtruth.astype(np.int64)
     (hyxg, hxgy) = split_vi(reconstruction, groundtruth, ignore_reconstruction, ignore_groundtruth)
     return (hxgy, hyxg)
 
@@ -165,7 +167,11 @@ def contingency_table(seg, gt, ignore_seg=[0], ignore_gt=[0], norm=True):
     for j in ignore_gt:
         ignored[gtr == j] = True
     data[ignored] = 0
-    cont = sparse.coo_matrix((data, (segr, gtr))).tocsc()
+
+    M = int(np.max(segr)) + 1
+    N = int(np.max(gtr)) + 1
+
+    cont = sparse.coo_matrix((data, (segr, gtr)), shape=(M, N)).tocsc()
     if norm:
         cont /= float(cont.sum())
     return cont

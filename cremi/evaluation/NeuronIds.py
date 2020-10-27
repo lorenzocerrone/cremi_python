@@ -29,9 +29,9 @@ class NeuronIds:
 
         if self.border_threshold:
 
-            print("Computing border mask...")
+            #print("Computing border mask...")
 
-            self.gt = np.zeros(groundtruth.data.shape, dtype=np.uint64)
+            self.gt = np.zeros(groundtruth.data.shape, dtype=np.uint32)
             create_border_mask(
                 groundtruth.data,
                 self.gt,
@@ -49,8 +49,7 @@ class NeuronIds:
         assert list(segmentation.data.shape) == list(self.groundtruth.data.shape)
         assert list(segmentation.resolution) == list(self.groundtruth.resolution)
 
-        print("Computing VOI...")
-
+        #print("Computing VOI...")
         return voi(np.array(segmentation.data), self.gt, ignore_groundtruth = [0])
 
     def adapted_rand(self, segmentation):
@@ -58,6 +57,6 @@ class NeuronIds:
         assert list(segmentation.data.shape) == list(self.groundtruth.data.shape)
         assert list(segmentation.resolution) == list(self.groundtruth.resolution)
 
-        print("Computing RAND...")
+        #print("Computing RAND...")
 
         return adapted_rand(np.array(segmentation.data), self.gt)
