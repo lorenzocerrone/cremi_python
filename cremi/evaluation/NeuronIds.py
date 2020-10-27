@@ -1,7 +1,7 @@
 import numpy as np
-from border_mask import create_border_mask
-from voi import voi
-from rand import adapted_rand
+from .border_mask import create_border_mask
+from .voi import voi
+from .rand import adapted_rand
 
 class NeuronIds:
 
@@ -29,7 +29,7 @@ class NeuronIds:
 
         if self.border_threshold:
 
-            print "Computing border mask..."
+            print("Computing border mask...")
 
             self.gt = np.zeros(groundtruth.data.shape, dtype=np.uint64)
             create_border_mask(
@@ -49,7 +49,7 @@ class NeuronIds:
         assert list(segmentation.data.shape) == list(self.groundtruth.data.shape)
         assert list(segmentation.resolution) == list(self.groundtruth.resolution)
 
-        print "Computing VOI..."
+        print("Computing VOI...")
 
         return voi(np.array(segmentation.data), self.gt, ignore_groundtruth = [0])
 
@@ -58,6 +58,6 @@ class NeuronIds:
         assert list(segmentation.data.shape) == list(self.groundtruth.data.shape)
         assert list(segmentation.resolution) == list(self.groundtruth.resolution)
 
-        print "Computing RAND..."
+        print("Computing RAND...")
 
         return adapted_rand(np.array(segmentation.data), self.gt)

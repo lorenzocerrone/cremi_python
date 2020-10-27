@@ -15,9 +15,9 @@ def create_border_mask(input_data, target, max_dist, background_label,axis=0):
     background_label : int - Border mask will be overlayed using this label.
     axis : int - Axis of iteration (perpendicular to 2d images for which mask will be generated)
     """
-    sl = [slice(None) for d in xrange(len(target.shape))]
+    sl = [slice(None) for d in range(len(target.shape))]
 
-    for z in xrange(target.shape[axis]):
+    for z in range(target.shape[axis]):
         sl[ axis ] = z
         border = create_border_mask_2d(input_data[tuple(sl)], max_dist)
         target_slice = input_data[tuple(sl)] if isinstance(input_data,h5py.Dataset) else np.copy(input_data[tuple(sl)]) 
