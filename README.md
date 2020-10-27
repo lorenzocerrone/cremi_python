@@ -1,3 +1,5 @@
+# Un-official port of the CREMI Python Scripts from python 2.* to python 3.* 
+
 CREMI Python Scripts
 ====================
 
@@ -9,7 +11,7 @@ Installation
 If you are using `pip`, installing the scripts is as easy as
 
 ```
-pip install git+https://github.com/cremi/cremi_python.git
+pip install git+https://github.com/lorenzocerrone/cremi_python.git
 ```
 
 Alternatively, you can clone this repository yourself and use `distutils`
