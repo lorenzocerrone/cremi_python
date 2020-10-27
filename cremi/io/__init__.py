@@ -1,1 +1,1 @@
-from CremiFile import *
+from .CremiFile import *
