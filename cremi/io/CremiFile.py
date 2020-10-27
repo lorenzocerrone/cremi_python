@@ -37,7 +37,7 @@ class CremiFile(object):
 
             ds = self.h5file[path]
             if ds.dtype == dtype and ds.shape == np.array(data).shape:
-                print "overwriting existing dataset"
+                print("overwriting existing dataset")
                 self.h5file[path][:] = data[:]
                 return
 
