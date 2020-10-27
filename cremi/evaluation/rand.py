@@ -41,8 +41,8 @@ def adapted_rand(seg, gt, all_stats=False):
     segB = np.ravel(seg)
     n = segA.size
 
-    n_labels_A = int(np.amax(segA) + 1)
-    n_labels_B = int(np.amax(segB) + 1)
+    n_labels_A = int(np.amax(segA)) + 1
+    n_labels_B = int(np.amax(segB)) + 1
 
     ones_data = np.ones(n)
 
